@@ -18,6 +18,14 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+  migrate:
+    depends_on:
+      db:
+        condition: service_healthy
+    image: migrate/migrate
+    volumes:
+       - ./migrate:/migrations
+    command: ["-path", "./migrations", "-database",  "postgresql://test:test@db:5432/test?sslmode=disable", "up"]  
   web:
     image: ${NAME}:${VERSION}
     build:
