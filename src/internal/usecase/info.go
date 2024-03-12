@@ -12,15 +12,13 @@ import (
 
 type InfoUsecase struct {
 	log   *logrus.Logger
-	dbLog *logrus.Logger
 	rimport.RepositoryImports
 	*bimport.BridgeImports
 }
 
-func NewInfo(log, dblog *logrus.Logger, ri rimport.RepositoryImports, bi *bimport.BridgeImports) *InfoUsecase {
+func NewInfo(log *logrus.Logger, ri rimport.RepositoryImports, bi *bimport.BridgeImports) *InfoUsecase {
 	return &InfoUsecase{
 		log:               log,
-		dbLog:             dblog,
 		RepositoryImports: ri,
 		BridgeImports:     bi,
 	}
@@ -30,6 +28,7 @@ func (u *InfoUsecase) SaveUser(ts transaction.Session, user user.User) error {
 	if user.Name == "" {
 		return global.ErrInternalError
 	}
+
 
 	if err := u.Repository.Info.SaveUser(ts, user); err != nil {
 		u.log.Errorln("не удалось сохранить юзера, ошибка:", err)

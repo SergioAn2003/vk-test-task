@@ -3,7 +3,6 @@ package main
 import (
 	"grpc-test/bimport"
 	"grpc-test/config"
-	"grpc-test/external/grpc"
 	"grpc-test/internal/transaction"
 	"grpc-test/rimport"
 	"grpc-test/tools/logger"
@@ -37,18 +36,12 @@ func main() {
 	}
 
 	sm := transaction.NewSQLSessionManager(db)
-
 	ri := rimport.NewRepositoryImports(sm)
 
-	dblog := logger.NewDBLog(module, ri)
-
 	bi := bimport.NewEmptyBridge()
-	ui := uimport.NewUsecaseImports(log, dblog, ri, bi, sm)
+	ui := uimport.NewUsecaseImports(log, ri, bi, sm)
 
 	bi.InitBridge(
 		ui.Usecase.Info,
 	)
-
-	server := grpc.NewServer(log, ui)
-	server.RunGrpcServer()
 }

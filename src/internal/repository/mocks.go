@@ -5,15 +5,14 @@
 //
 //	mockgen -destination=../internal/repository/mocks.go -package=repository -source=../internal/repository/interface.go
 //
+
 // Package repository is a generated GoMock package.
 package repository
 
 import (
-	context "context"
 	user "grpc-test/internal/entity/user"
 	transaction "grpc-test/internal/transaction"
 	reflect "reflect"
-	time "time"
 
 	gomock "go.uber.org/mock/gomock"
 )
@@ -53,64 +52,4 @@ func (m *MockInfo) SaveUser(ts transaction.Session, user user.User) error {
 func (mr *MockInfoMockRecorder) SaveUser(ts, user any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveUser", reflect.TypeOf((*MockInfo)(nil).SaveUser), ts, user)
-}
-
-// MockRedisClient is a mock of RedisClient interface.
-type MockRedisClient struct {
-	ctrl     *gomock.Controller
-	recorder *MockRedisClientMockRecorder
-}
-
-// MockRedisClientMockRecorder is the mock recorder for MockRedisClient.
-type MockRedisClientMockRecorder struct {
-	mock *MockRedisClient
-}
-
-// NewMockRedisClient creates a new mock instance.
-func NewMockRedisClient(ctrl *gomock.Controller) *MockRedisClient {
-	mock := &MockRedisClient{ctrl: ctrl}
-	mock.recorder = &MockRedisClientMockRecorder{mock}
-	return mock
-}
-
-// EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockRedisClient) EXPECT() *MockRedisClientMockRecorder {
-	return m.recorder
-}
-
-// Set mocks base method.
-func (m *MockRedisClient) Set(ctx context.Context, key string, value any, ttl time.Duration) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Set", ctx, key, value, ttl)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
-
-// Set indicates an expected call of Set.
-func (mr *MockRedisClientMockRecorder) Set(ctx, key, value, ttl any) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Set", reflect.TypeOf((*MockRedisClient)(nil).Set), ctx, key, value, ttl)
-}
-
-// MockLogger is a mock of Logger interface.
-type MockLogger struct {
-	ctrl     *gomock.Controller
-	recorder *MockLoggerMockRecorder
-}
-
-// MockLoggerMockRecorder is the mock recorder for MockLogger.
-type MockLoggerMockRecorder struct {
-	mock *MockLogger
-}
-
-// NewMockLogger creates a new mock instance.
-func NewMockLogger(ctrl *gomock.Controller) *MockLogger {
-	mock := &MockLogger{ctrl: ctrl}
-	mock.recorder = &MockLoggerMockRecorder{mock}
-	return mock
-}
-
-// EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockLogger) EXPECT() *MockLoggerMockRecorder {
-	return m.recorder
 }

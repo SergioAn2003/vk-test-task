@@ -1,6 +1,4 @@
 package bridge
 
-
-type Info interface{
-	
+type Info interface {
 }

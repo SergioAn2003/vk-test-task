@@ -5,6 +5,7 @@
 //
 //	mockgen -destination=../internal/bridge/mocks.go -package=bridge -source=../internal/bridge/interface.go
 //
+
 // Package bridge is a generated GoMock package.
 package bridge
 

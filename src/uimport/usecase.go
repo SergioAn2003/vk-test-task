@@ -1,8 +1,12 @@
 package uimport
 
-import "grpc-test/internal/usecase"
+import (
+	"grpc-test/internal/usecase"
+
+	"github.com/sirupsen/logrus"
+)
 
 type Usecase struct {
-	Info   *usecase.InfoUsecase
-	Logger *usecase.LoggerUsecase
+	Info *usecase.InfoUsecase
+	log  *logrus.Logger
 }

@@ -6,6 +6,7 @@ import (
 	"grpc-test/internal/transaction"
 	"grpc-test/internal/usecase"
 	"grpc-test/rimport"
+	"grpc-test/tools/logger"
 	"os"
 
 	"github.com/sirupsen/logrus"
@@ -20,7 +21,6 @@ type UsecaseImports struct {
 
 func NewUsecaseImports(
 	log *logrus.Logger,
-	dblog *logrus.Logger,
 	ri rimport.RepositoryImports,
 	bi *bimport.BridgeImports,
 	sessionManager transaction.SessionManager,
@@ -35,8 +35,8 @@ func NewUsecaseImports(
 		SessionManager: sessionManager,
 
 		Usecase: Usecase{
-			Info:   usecase.NewInfo(log, dblog, ri, bi),
-			Logger: usecase.NewLogger(log, ri),
+			Info: usecase.NewInfo(log, ri, bi),
+			log:  logger.NewUsecaseLogger(log, "usecase"),
 		},
 		BridgeImports: bi,
 	}

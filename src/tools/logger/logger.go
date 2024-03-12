@@ -2,8 +2,6 @@ package logger
 
 import (
 	"fmt"
-	"grpc-test/internal/usecase"
-	"grpc-test/rimport"
 	"io"
 	"log"
 	"os"
@@ -150,20 +148,4 @@ func NewSingleLogger(module string) *logrus.Logger {
 	}
 
 	return newLogger
-}
-
-func NewDBLog(module string, ri rimport.RepositoryImports) *logrus.Logger {
-	log := NewFileLogger(module)
-	logUsecase := usecase.NewLogger(log, ri)
-
-	return newDBLog(logUsecase, module, log, logUsecase.SpecialFields()...)
-
-}
-
-// newDBLog создает логгер в БД (LOG_TABLE) и параллельно файловый
-func newDBLog(storage LogStorage, module string, log *logrus.Logger, specialFields ...string) *logrus.Logger {
-	dbHook := NewDBHook(storage, module, specialFields...)
-	log.Hooks.Add(&dbHook)
-
-	return log
 }

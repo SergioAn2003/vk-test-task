@@ -30,9 +30,7 @@ func NewTestRepositoryImports(
 		Config:         config,
 		SessionManager: transaction.NewMockSessionManager(ctrl),
 		MockRepository: MockRepository{
-			Info:        repository.NewMockInfo(ctrl),
-			Logger:      repository.NewMockLogger(ctrl),
-			RedisClient: repository.NewMockRedisClient(ctrl),
+			Info: repository.NewMockInfo(ctrl),
 		},
 	}
 }
@@ -59,9 +57,7 @@ func (t *TestRepositoryImports) RepositoryImports() RepositoryImports {
 		SessionManager: t.SessionManager,
 		Config:         t.Config,
 		Repository: Repository{
-			Info:        t.MockRepository.Info,
-			Logger:      t.MockRepository.Logger,
-			RedisClient: t.MockRepository.RedisClient,
+			Info: t.MockRepository.Info,
 		},
 	}
 }
