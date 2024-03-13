@@ -1,10 +1,10 @@
 package repository
 
 import (
-	"grpc-test/internal/entity/user"
+	"grpc-test/internal/entity/actor"
 	"grpc-test/internal/transaction"
 )
 
-type Info interface {
-	SaveUser(ts transaction.Session, user user.User) error
+type Actors interface {
+	CreateActor(ts transaction.Session, actor actor.Actor) error
 }

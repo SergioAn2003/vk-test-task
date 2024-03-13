@@ -7,6 +7,6 @@ import (
 )
 
 type Usecase struct {
-	Info *usecase.InfoUsecase
-	log  *logrus.Logger
+	Actors *usecase.ActorsUsecase
+	log    *logrus.Logger
 }

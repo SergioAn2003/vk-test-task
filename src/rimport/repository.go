@@ -5,9 +5,9 @@ import (
 )
 
 type Repository struct {
-	Info repository.Info
+	Actors repository.Actors
 }
 
 type MockRepository struct {
-	Info *repository.MockInfo
+	Actors *repository.MockActors
 }

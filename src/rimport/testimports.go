@@ -30,7 +30,7 @@ func NewTestRepositoryImports(
 		Config:         config,
 		SessionManager: transaction.NewMockSessionManager(ctrl),
 		MockRepository: MockRepository{
-			Info: repository.NewMockInfo(ctrl),
+			Actors: repository.NewMockActors(ctrl),
 		},
 	}
 }
@@ -57,7 +57,7 @@ func (t *TestRepositoryImports) RepositoryImports() RepositoryImports {
 		SessionManager: t.SessionManager,
 		Config:         t.Config,
 		Repository: Repository{
-			Info: t.MockRepository.Info,
+			Actors: t.MockRepository.Actors,
 		},
 	}
 }

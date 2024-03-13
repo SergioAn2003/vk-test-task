@@ -42,6 +42,6 @@ func main() {
 	ui := uimport.NewUsecaseImports(log, ri, bi, sm)
 
 	bi.InitBridge(
-		ui.Usecase.Info,
+		ui.Usecase.Actors,
 	)
 }

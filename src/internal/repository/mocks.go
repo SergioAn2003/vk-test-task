@@ -10,46 +10,46 @@
 package repository
 
 import (
-	user "grpc-test/internal/entity/user"
+	actor "grpc-test/internal/entity/actor"
 	transaction "grpc-test/internal/transaction"
 	reflect "reflect"
 
 	gomock "go.uber.org/mock/gomock"
 )
 
-// MockInfo is a mock of Info interface.
-type MockInfo struct {
+// MockActors is a mock of Actors interface.
+type MockActors struct {
 	ctrl     *gomock.Controller
-	recorder *MockInfoMockRecorder
+	recorder *MockActorsMockRecorder
 }
 
-// MockInfoMockRecorder is the mock recorder for MockInfo.
-type MockInfoMockRecorder struct {
-	mock *MockInfo
+// MockActorsMockRecorder is the mock recorder for MockActors.
+type MockActorsMockRecorder struct {
+	mock *MockActors
 }
 
-// NewMockInfo creates a new mock instance.
-func NewMockInfo(ctrl *gomock.Controller) *MockInfo {
-	mock := &MockInfo{ctrl: ctrl}
-	mock.recorder = &MockInfoMockRecorder{mock}
+// NewMockActors creates a new mock instance.
+func NewMockActors(ctrl *gomock.Controller) *MockActors {
+	mock := &MockActors{ctrl: ctrl}
+	mock.recorder = &MockActorsMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockInfo) EXPECT() *MockInfoMockRecorder {
+func (m *MockActors) EXPECT() *MockActorsMockRecorder {
 	return m.recorder
 }
 
-// SaveUser mocks base method.
-func (m *MockInfo) SaveUser(ts transaction.Session, user user.User) error {
+// CreateActor mocks base method.
+func (m *MockActors) CreateActor(ts transaction.Session, actor actor.Actor) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SaveUser", ts, user)
+	ret := m.ctrl.Call(m, "CreateActor", ts, actor)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// SaveUser indicates an expected call of SaveUser.
-func (mr *MockInfoMockRecorder) SaveUser(ts, user any) *gomock.Call {
+// CreateActor indicates an expected call of CreateActor.
+func (mr *MockActorsMockRecorder) CreateActor(ts, actor any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveUser", reflect.TypeOf((*MockInfo)(nil).SaveUser), ts, user)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActors)(nil).CreateActor), ts, actor)
 }
