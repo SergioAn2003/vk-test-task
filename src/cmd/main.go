@@ -3,6 +3,7 @@ package main
 import (
 	"grpc-test/bimport"
 	"grpc-test/config"
+	"grpc-test/external/rest"
 	"grpc-test/internal/transaction"
 	"grpc-test/rimport"
 	"grpc-test/tools/logger"
@@ -28,7 +29,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	db := pgdb.NewPostgresqlDB(config.PostgresqlConnectionString())
+	db := pgdb.NewPostgresqlDB(config.PostgresConnectionString())
 	defer db.Close()
 
 	if err := db.Ping(); err != nil {
@@ -44,4 +45,7 @@ func main() {
 	bi.InitBridge(
 		ui.Usecase.Actors,
 	)
+
+	server := rest.NewServer(log, ui)
+	server.Run()
 }

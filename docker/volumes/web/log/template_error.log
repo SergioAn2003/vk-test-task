@@ -1,0 +1,1 @@
+[template] [31mFATA[0m[13.03.2024 17:20:59] не удалось начать прослушивание, ошибка: listen tcp: address 8080: missing port in address  [31mfile[0m=rest/server.go [31mline[0m=29

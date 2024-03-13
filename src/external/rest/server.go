@@ -9,6 +9,7 @@ import (
 
 type Server struct {
 	log *logrus.Logger
+	mux *http.ServeMux
 	uimport.UsecaseImports
 }
 
@@ -16,14 +17,15 @@ func NewServer(log *logrus.Logger, ui uimport.UsecaseImports) *Server {
 	return &Server{
 		log:            log,
 		UsecaseImports: ui,
+		mux:            http.NewServeMux(),
 	}
 }
 
 func (s *Server) Run() {
-	router := http.NewServeMux()
+	s.mux.HandleFunc("/actor/create", s.CreateUser)
 
-	if err := http.ListenAndServe(":8080", router); err != nil {
-		s.log.Errorln("не удалось начать прослушивание, ошибка:", err)
-		return
+	s.log.Infoln("сервер успешно запущен на порту :9000")
+	if err := http.ListenAndServe(":9000", s.mux); err != nil {
+		s.log.Fatalln("не удалось начать прослушивание, ошибка:", err)
 	}
 }
