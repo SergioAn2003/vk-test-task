@@ -40,3 +40,10 @@
 [template] [36mINFO[0m[13.03.2024 17:21:58] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[13.03.2024 17:21:58] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=27
 [template] [36mINFO[0m[13.03.2024 17:28:14] актер успешно добавлен                        [36mfile[0m=usecase/actors.go [36mline[0m=37
+[template] [36mINFO[0m[14.03.2024 13:59:21] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 13:59:21] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=27
+[template] [36mINFO[0m[14.03.2024 14:00:17] актер успешно добавлен                        [36mfile[0m=usecase/actors.go [36mline[0m=40
+[template] [36mINFO[0m[14.03.2024 14:19:07] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 14:19:07] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=27
+[template] [36mINFO[0m[14.03.2024 14:21:51] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 14:21:51] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=28

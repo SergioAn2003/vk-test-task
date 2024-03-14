@@ -24,16 +24,30 @@ func NewActors(log *logrus.Logger, ri rimport.RepositoryImports, bi *bimport.Bri
 	}
 }
 
-func (u *ActorsUsecase) CreateUser(ts transaction.Session, p actor.CreateActorParam) error {
+func (u *ActorsUsecase) CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error) {
 	if !p.IsValidData() {
-		return global.ErrParamsIncorect
+		err = global.ErrParamsIncorect
+		return
 	}
 
-	if err := u.Repository.Actors.CreateActor(ts, p); err != nil {
-		u.log.Errorln("не удалось добавить актёра, ошибка:", err)
-		return global.ErrInternalError
+	actorID, err = u.Repository.Actors.CreateActor(ts, p)
+	if err != nil {
+		u.log.Errorln("не удалось добавить актера, ошибка:", err)
+		err = global.ErrInternalError
+		return
 	}
 
 	u.log.Infoln("актер успешно добавлен")
-	return nil
+	return
+}
+
+func (u *ActorsUsecase) UpdateActor(ts transaction.Session, p actor.UpdateActorParam) (err error) {
+	if err = u.Repository.Actors.Update(ts, p); err != nil {
+		u.log.Errorln("не удалось обновить данные актера, ошибка:", err)
+		err = global.ErrInternalError
+		return
+	}
+
+	u.log.Infoln("данные актера успешно обновлены")
+	return
 }

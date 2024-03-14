@@ -12,17 +12,18 @@ func NewActors() repository.Actors {
 	return &actorsRepository{}
 }
 
-func (r *actorsRepository) CreateActor(ts transaction.Session, p actor.CreateActorParam) error {
+func (r *actorsRepository) CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error) {
 	sqlQuery := `
 	 insert into actors
 	 (name, gender, birth_date)
-	 values (:name, :gender, :birth_date)`
+	 values ($1, $2, $3)
+	 returning id`
 
-	_, err := SqlxTx(ts).NamedExec(sqlQuery, p)
-	return err
+	err = SqlxTx(ts).QueryRow(sqlQuery, p.Name, p.Gender, p.BirthDate).Scan(&actorID)
+	return
 }
 
-func (r *actorsRepository) Update(ts transaction.Session, actor actor.Actor) error {
+func (r *actorsRepository) Update(ts transaction.Session, p actor.UpdateActorParam) (err error) {
 	sqlQuery := `
 	update actors set
 	name = coalesce(:name, name),
@@ -30,6 +31,6 @@ func (r *actorsRepository) Update(ts transaction.Session, actor actor.Actor) err
 	birth_date = coalesce (:birth_date, birth_date)
 	where id = :id
 	`
-	_, err := SqlxTx(ts).NamedExec(sqlQuery, actor)
-	return err
+	_, err = SqlxTx(ts).NamedExec(sqlQuery, p)
+	return
 }

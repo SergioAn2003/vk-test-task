@@ -6,5 +6,6 @@ import (
 )
 
 type Actors interface {
-	CreateActor(ts transaction.Session, p actor.CreateActorParam) error
+	CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error)
+	Update(ts transaction.Session, p actor.UpdateActorParam) (err error)
 }

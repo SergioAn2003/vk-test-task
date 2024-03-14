@@ -2,12 +2,13 @@ package rest
 
 import (
 	"encoding/json"
+	"fmt"
 	"vk-film-library/internal/entity/actor"
 
 	"net/http"
 )
 
-func (s *Server) CreateUser(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CreateActor(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
 		return
@@ -28,7 +29,8 @@ func (s *Server) CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 	defer ts.Rollback()
 
-	if err := s.Usecase.Actors.CreateUser(ts, createActorParam); err != nil {
+	actorID, err := s.Usecase.Actors.CreateActor(ts, createActorParam)
+	if err != nil {
 		return
 	}
 
@@ -39,4 +41,40 @@ func (s *Server) CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "актер успешно добавлен, id актера = %d", actorID)
+}
+
+func (s *Server) UpdateActor(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPut {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var updateActorParam actor.UpdateActorParam
+
+	if err := json.NewDecoder(r.Body).Decode(&updateActorParam); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	if err := s.Usecase.Actors.UpdateActor(ts, updateActorParam); err != nil {
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintln(w, "данные актера успешно изменены")
 }

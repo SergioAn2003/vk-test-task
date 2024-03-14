@@ -22,8 +22,9 @@ func NewServer(log *logrus.Logger, ui uimport.UsecaseImports) *Server {
 }
 
 func (s *Server) Run() {
-	s.mux.HandleFunc("/actor/create", s.CreateUser)
-
+	s.mux.HandleFunc("/actor/create", s.CreateActor)
+	s.mux.HandleFunc("/actor/update", s.UpdateActor)
+	
 	s.log.Infoln("сервер успешно запущен на порту :9000")
 	if err := http.ListenAndServe(":9000", s.mux); err != nil {
 		s.log.Fatalln("не удалось начать прослушивание, ошибка:", err)

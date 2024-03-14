@@ -41,15 +41,30 @@ func (m *MockActors) EXPECT() *MockActorsMockRecorder {
 }
 
 // CreateActor mocks base method.
-func (m *MockActors) CreateActor(ts transaction.Session, p actor.CreateActorParam) error {
+func (m *MockActors) CreateActor(ts transaction.Session, p actor.CreateActorParam) (int, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreateActor", ts, p)
-	ret0, _ := ret[0].(error)
-	return ret0
+	ret0, _ := ret[0].(int)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
 }
 
 // CreateActor indicates an expected call of CreateActor.
 func (mr *MockActorsMockRecorder) CreateActor(ts, p any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActors)(nil).CreateActor), ts, p)
+}
+
+// Update mocks base method.
+func (m *MockActors) Update(ts transaction.Session, p actor.UpdateActorParam) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Update", ts, p)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// Update indicates an expected call of Update.
+func (mr *MockActorsMockRecorder) Update(ts, p any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockActors)(nil).Update), ts, p)
 }
