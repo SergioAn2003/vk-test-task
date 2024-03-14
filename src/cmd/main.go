@@ -1,15 +1,15 @@
 package main
 
 import (
-	"grpc-test/bimport"
-	"grpc-test/config"
-	"grpc-test/external/rest"
-	"grpc-test/internal/transaction"
-	"grpc-test/rimport"
-	"grpc-test/tools/logger"
-	"grpc-test/tools/pgdb"
-	"grpc-test/uimport"
 	"os"
+	"vk-film-library/bimport"
+	"vk-film-library/config"
+	"vk-film-library/external/rest"
+	"vk-film-library/internal/transaction"
+	"vk-film-library/rimport"
+	"vk-film-library/tools/logger"
+	"vk-film-library/tools/pgdb"
+	"vk-film-library/uimport"
 )
 
 const (

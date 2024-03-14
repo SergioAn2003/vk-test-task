@@ -1,8 +1,9 @@
 package bimport
 
 import (
+	"vk-film-library/internal/bridge"
+
 	"go.uber.org/mock/gomock"
-	"grpc-test/internal/bridge"
 )
 
 type TestBridgeImports struct {

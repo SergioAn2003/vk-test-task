@@ -1,8 +1,6 @@
 package rimport
 
-import (
-	"grpc-test/internal/repository"
-)
+import "vk-film-library/internal/repository"
 
 type Repository struct {
 	Actors repository.Actors

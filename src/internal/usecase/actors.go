@@ -1,11 +1,11 @@
 package usecase
 
 import (
-	"grpc-test/bimport"
-	"grpc-test/internal/entity/actor"
-	"grpc-test/internal/entity/global"
-	"grpc-test/internal/transaction"
-	"grpc-test/rimport"
+	"vk-film-library/bimport"
+	"vk-film-library/internal/entity/actor"
+	"vk-film-library/internal/entity/global"
+	"vk-film-library/internal/transaction"
+	"vk-film-library/rimport"
 
 	"github.com/sirupsen/logrus"
 )
@@ -24,12 +24,12 @@ func NewActors(log *logrus.Logger, ri rimport.RepositoryImports, bi *bimport.Bri
 	}
 }
 
-func (u *ActorsUsecase) CreateUser(ts transaction.Session, actor actor.Actor) error {
-	if !actor.IsValidData() {
+func (u *ActorsUsecase) CreateUser(ts transaction.Session, p actor.CreateActorParam) error {
+	if !p.IsValidData() {
 		return global.ErrParamsIncorect
 	}
 
-	if err := u.Repository.Actors.CreateActor(ts, actor); err != nil {
+	if err := u.Repository.Actors.CreateActor(ts, p); err != nil {
 		u.log.Errorln("не удалось добавить актёра, ошибка:", err)
 		return global.ErrInternalError
 	}

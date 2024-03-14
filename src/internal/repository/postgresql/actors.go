@@ -1,9 +1,9 @@
 package postgresql
 
 import (
-	"grpc-test/internal/entity/actor"
-	"grpc-test/internal/repository"
-	"grpc-test/internal/transaction"
+	"vk-film-library/internal/entity/actor"
+	"vk-film-library/internal/repository"
+	"vk-film-library/internal/transaction"
 )
 
 type actorsRepository struct{}
@@ -12,13 +12,13 @@ func NewActors() repository.Actors {
 	return &actorsRepository{}
 }
 
-func (r *actorsRepository) CreateActor(ts transaction.Session, actor actor.Actor) error {
+func (r *actorsRepository) CreateActor(ts transaction.Session, p actor.CreateActorParam) error {
 	sqlQuery := `
 	 insert into actors
 	 (name, gender, birth_date)
 	 values (:name, :gender, :birth_date)`
 
-	_, err := SqlxTx(ts).NamedExec(sqlQuery, actor)
+	_, err := SqlxTx(ts).NamedExec(sqlQuery, p)
 	return err
 }
 

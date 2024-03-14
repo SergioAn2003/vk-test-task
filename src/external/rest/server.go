@@ -1,8 +1,8 @@
 package rest
 
 import (
-	"grpc-test/uimport"
 	"net/http"
+	"vk-film-library/uimport"
 
 	"github.com/sirupsen/logrus"
 )

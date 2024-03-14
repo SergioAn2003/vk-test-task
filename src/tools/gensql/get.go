@@ -2,7 +2,7 @@ package gensql
 
 import (
 	"database/sql"
-	"grpc-test/internal/entity/global"
+	"vk-film-library/internal/entity/global"
 
 	"github.com/jmoiron/sqlx"
 )

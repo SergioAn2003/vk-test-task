@@ -1,7 +1,7 @@
 package postgresql
 
 import (
-	"grpc-test/internal/transaction"
+	"vk-film-library/internal/transaction"
 
 	"github.com/jmoiron/sqlx"
 )

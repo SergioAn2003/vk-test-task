@@ -1,11 +1,11 @@
 package rimport
 
 import (
-	"grpc-test/config"
-	"grpc-test/internal/repository"
-	"grpc-test/internal/transaction"
 	"log"
 	"os"
+	"vk-film-library/config"
+	"vk-film-library/internal/repository"
+	"vk-film-library/internal/transaction"
 
 	"go.uber.org/mock/gomock"
 )

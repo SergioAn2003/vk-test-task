@@ -10,9 +10,9 @@
 package repository
 
 import (
-	actor "grpc-test/internal/entity/actor"
-	transaction "grpc-test/internal/transaction"
 	reflect "reflect"
+	actor "vk-film-library/internal/entity/actor"
+	transaction "vk-film-library/internal/transaction"
 
 	gomock "go.uber.org/mock/gomock"
 )
@@ -41,15 +41,15 @@ func (m *MockActors) EXPECT() *MockActorsMockRecorder {
 }
 
 // CreateActor mocks base method.
-func (m *MockActors) CreateActor(ts transaction.Session, actor actor.Actor) error {
+func (m *MockActors) CreateActor(ts transaction.Session, p actor.CreateActorParam) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateActor", ts, actor)
+	ret := m.ctrl.Call(m, "CreateActor", ts, p)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // CreateActor indicates an expected call of CreateActor.
-func (mr *MockActorsMockRecorder) CreateActor(ts, actor any) *gomock.Call {
+func (mr *MockActorsMockRecorder) CreateActor(ts, p any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActors)(nil).CreateActor), ts, actor)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActors)(nil).CreateActor), ts, p)
 }

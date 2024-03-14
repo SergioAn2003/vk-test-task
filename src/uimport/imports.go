@@ -1,13 +1,13 @@
 package uimport
 
 import (
-	"grpc-test/bimport"
-	"grpc-test/config"
-	"grpc-test/internal/transaction"
-	"grpc-test/internal/usecase"
-	"grpc-test/rimport"
-	"grpc-test/tools/logger"
 	"os"
+	"vk-film-library/bimport"
+	"vk-film-library/config"
+	"vk-film-library/internal/transaction"
+	"vk-film-library/internal/usecase"
+	"vk-film-library/rimport"
+	"vk-film-library/tools/logger"
 
 	"github.com/sirupsen/logrus"
 )

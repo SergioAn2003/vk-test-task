@@ -2,7 +2,8 @@ package rest
 
 import (
 	"encoding/json"
-	"grpc-test/internal/entity/actor"
+	"vk-film-library/internal/entity/actor"
+
 	"net/http"
 )
 
@@ -12,9 +13,9 @@ func (s *Server) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var act actor.Actor
+	var createActorParam actor.CreateActorParam
 
-	if err := json.NewDecoder(r.Body).Decode(&act); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&createActorParam); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -27,7 +28,7 @@ func (s *Server) CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 	defer ts.Rollback()
 
-	if err := s.Usecase.Actors.CreateUser(ts, act); err != nil {
+	if err := s.Usecase.Actors.CreateUser(ts, createActorParam); err != nil {
 		return
 	}
 

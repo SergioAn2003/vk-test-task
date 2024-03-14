@@ -10,6 +10,7 @@ type Actor struct {
 	Name      string    `db:"name" json:"name"`
 	Gender    string    `db:"gender" json:"gender"`
 	BirthDate time.Time `db:"birth_date" json:"birth_date"`
+	FilmList []struct{}
 }
 
 // IsValidData проверка на валидные значения

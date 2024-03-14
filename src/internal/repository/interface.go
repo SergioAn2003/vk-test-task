@@ -1,10 +1,10 @@
 package repository
 
 import (
-	"grpc-test/internal/entity/actor"
-	"grpc-test/internal/transaction"
+	"vk-film-library/internal/entity/actor"
+	"vk-film-library/internal/transaction"
 )
 
 type Actors interface {
-	CreateActor(ts transaction.Session, actor actor.Actor) error
+	CreateActor(ts transaction.Session, p actor.CreateActorParam) error
 }

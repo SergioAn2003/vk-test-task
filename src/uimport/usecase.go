@@ -1,7 +1,7 @@
 package uimport
 
 import (
-	"grpc-test/internal/usecase"
+	"vk-film-library/internal/usecase"
 
 	"github.com/sirupsen/logrus"
 )

@@ -1,11 +1,11 @@
 package rimport
 
 import (
-	"grpc-test/config"
-	"grpc-test/internal/repository/postgresql"
-	"grpc-test/internal/transaction"
 	"log"
 	"os"
+	"vk-film-library/config"
+	"vk-film-library/internal/repository/postgresql"
+	"vk-film-library/internal/transaction"
 )
 
 type RepositoryImports struct {

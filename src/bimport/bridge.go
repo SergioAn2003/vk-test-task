@@ -1,6 +1,6 @@
 package bimport
 
-import "grpc-test/internal/bridge"
+import "vk-film-library/internal/bridge"
 
 type Bridge struct {
 	Info bridge.Info
