@@ -24,7 +24,7 @@ func NewRepositoryImports(sessionManager transaction.SessionManager) RepositoryI
 		Config:         config,
 		SessionManager: sessionManager,
 		Repository: Repository{
-			Actors: postgresql.NewActors(),
+			Actor: postgresql.NewActor(),
 		},
 	}
 }

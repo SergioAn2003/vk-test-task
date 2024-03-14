@@ -36,7 +36,7 @@ func (u *ActorsUsecase) CreateActor(ts transaction.Session, p actor.CreateActorP
 		return
 	}
 
-	actorID, err = u.Repository.Actors.CreateActor(ts, p)
+	actorID, err = u.Repository.Actor.CreateActor(ts, p)
 	if err != nil {
 		u.log.WithFields(lf).Errorln("не удалось добавить актера, ошибка:", err)
 		err = global.ErrInternalError
@@ -57,7 +57,7 @@ func (u *ActorsUsecase) UpdateActor(ts transaction.Session, p actor.UpdateActorP
 		"new_birth_date": p.BirthDate,
 	}
 
-	if err = u.Repository.Actors.Update(ts, p); err != nil {
+	if err = u.Repository.Actor.Update(ts, p); err != nil {
 		u.log.WithFields(lf).Errorln("не удалось обновить данные актера, ошибка:", err)
 		err = global.ErrInternalError
 		return
@@ -75,7 +75,7 @@ func (u *ActorsUsecase) DeleteActor(ts transaction.Session, actorID int) (err er
 		return
 	}
 
-	if err = u.Repository.Actors.Delete(ts, actorID); err != nil {
+	if err = u.Repository.Actor.Delete(ts, actorID); err != nil {
 		u.log.WithFields(lf).Errorln("не удалось удалить актера, ошибка:", err)
 		err = global.ErrInternalError
 		return

@@ -112,5 +112,4 @@ func (s *Server) DeleteActor(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintln(w, "актер успешно удален")
-
 }

@@ -25,7 +25,7 @@ func (c CreateActorParam) IsValidData() bool {
 }
 
 type UpdateActorParam struct {
-	ID        int  `db:"id" json:"id"`
+	ID        int            `db:"actor_id" json:"actor_id"`
 	Name      sql.NullString `db:"name" json:"name"`
 	Gender    sql.NullString `db:"gender" json:"gender"`
 	BirthDate sql.NullTime   `db:"birth_date" json:"birth_date"`

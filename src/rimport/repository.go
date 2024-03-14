@@ -3,9 +3,9 @@ package rimport
 import "vk-film-library/internal/repository"
 
 type Repository struct {
-	Actors repository.Actors
+	Actor repository.Actor
 }
 
 type MockRepository struct {
-	Actors *repository.MockActors
+	Actor *repository.MockActor
 }

@@ -17,31 +17,31 @@ import (
 	gomock "go.uber.org/mock/gomock"
 )
 
-// MockActors is a mock of Actors interface.
-type MockActors struct {
+// MockActor is a mock of Actor interface.
+type MockActor struct {
 	ctrl     *gomock.Controller
-	recorder *MockActorsMockRecorder
+	recorder *MockActorMockRecorder
 }
 
-// MockActorsMockRecorder is the mock recorder for MockActors.
-type MockActorsMockRecorder struct {
-	mock *MockActors
+// MockActorMockRecorder is the mock recorder for MockActor.
+type MockActorMockRecorder struct {
+	mock *MockActor
 }
 
-// NewMockActors creates a new mock instance.
-func NewMockActors(ctrl *gomock.Controller) *MockActors {
-	mock := &MockActors{ctrl: ctrl}
-	mock.recorder = &MockActorsMockRecorder{mock}
+// NewMockActor creates a new mock instance.
+func NewMockActor(ctrl *gomock.Controller) *MockActor {
+	mock := &MockActor{ctrl: ctrl}
+	mock.recorder = &MockActorMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockActors) EXPECT() *MockActorsMockRecorder {
+func (m *MockActor) EXPECT() *MockActorMockRecorder {
 	return m.recorder
 }
 
 // CreateActor mocks base method.
-func (m *MockActors) CreateActor(ts transaction.Session, p actor.CreateActorParam) (int, error) {
+func (m *MockActor) CreateActor(ts transaction.Session, p actor.CreateActorParam) (int, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreateActor", ts, p)
 	ret0, _ := ret[0].(int)
@@ -50,13 +50,13 @@ func (m *MockActors) CreateActor(ts transaction.Session, p actor.CreateActorPara
 }
 
 // CreateActor indicates an expected call of CreateActor.
-func (mr *MockActorsMockRecorder) CreateActor(ts, p any) *gomock.Call {
+func (mr *MockActorMockRecorder) CreateActor(ts, p any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActors)(nil).CreateActor), ts, p)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActor)(nil).CreateActor), ts, p)
 }
 
 // Delete mocks base method.
-func (m *MockActors) Delete(ts transaction.Session, actorID int) error {
+func (m *MockActor) Delete(ts transaction.Session, actorID int) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Delete", ts, actorID)
 	ret0, _ := ret[0].(error)
@@ -64,13 +64,13 @@ func (m *MockActors) Delete(ts transaction.Session, actorID int) error {
 }
 
 // Delete indicates an expected call of Delete.
-func (mr *MockActorsMockRecorder) Delete(ts, actorID any) *gomock.Call {
+func (mr *MockActorMockRecorder) Delete(ts, actorID any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockActors)(nil).Delete), ts, actorID)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockActor)(nil).Delete), ts, actorID)
 }
 
 // Update mocks base method.
-func (m *MockActors) Update(ts transaction.Session, p actor.UpdateActorParam) error {
+func (m *MockActor) Update(ts transaction.Session, p actor.UpdateActorParam) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Update", ts, p)
 	ret0, _ := ret[0].(error)
@@ -78,7 +78,30 @@ func (m *MockActors) Update(ts transaction.Session, p actor.UpdateActorParam) er
 }
 
 // Update indicates an expected call of Update.
-func (mr *MockActorsMockRecorder) Update(ts, p any) *gomock.Call {
+func (mr *MockActorMockRecorder) Update(ts, p any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockActors)(nil).Update), ts, p)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockActor)(nil).Update), ts, p)
+}
+
+// MockMovies is a mock of Movies interface.
+type MockMovies struct {
+	ctrl     *gomock.Controller
+	recorder *MockMoviesMockRecorder
+}
+
+// MockMoviesMockRecorder is the mock recorder for MockMovies.
+type MockMoviesMockRecorder struct {
+	mock *MockMovies
+}
+
+// NewMockMovies creates a new mock instance.
+func NewMockMovies(ctrl *gomock.Controller) *MockMovies {
+	mock := &MockMovies{ctrl: ctrl}
+	mock.recorder = &MockMoviesMockRecorder{mock}
+	return mock
+}
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockMovies) EXPECT() *MockMoviesMockRecorder {
+	return m.recorder
 }

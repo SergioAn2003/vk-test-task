@@ -2,21 +2,23 @@ version: "3"
 
 services:
   db:
-    image: postgres:latest
+    image: postgres:16.2
     ports:
       - "5432:5432"
     environment:
       POSTGRES_USER: test_user
       POSTGRES_PASSWORD: test_password
       POSTGRES_DB: test_db
-      POSTGRES_URL: postgresql://test_user:test_password@localhost:5432/test_db?sslmode=disable
+      POSTGRES_URL:   
+      PGDATA: /data
       TZ: "GMT+3"
+    volumes:
+      - ./volumes/pg/data:/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U test_user -d test_db"]
       interval: 10s
       timeout: 10s
       retries: 5
-      start_period: 15s
   migrate:
     depends_on:
       db:

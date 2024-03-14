@@ -6,39 +6,39 @@ import (
 	"vk-film-library/internal/transaction"
 )
 
-type actorsRepository struct{}
+type actorRepository struct{}
 
-func NewActors() repository.Actors {
-	return &actorsRepository{}
+func NewActor() repository.Actor {
+	return &actorRepository{}
 }
 
-func (r *actorsRepository) CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error) {
+func (r *actorRepository) CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error) {
 	sqlQuery := `
 	 insert into actors
 	 (name, gender, birth_date)
 	 values ($1, $2, $3)
-	 returning id`
+	 returning actor_id`
 
 	err = SqlxTx(ts).QueryRow(sqlQuery, p.Name, p.Gender, p.BirthDate).Scan(&actorID)
 	return
 }
 
-func (r *actorsRepository) Update(ts transaction.Session, p actor.UpdateActorParam) (err error) {
+func (r *actorRepository) Update(ts transaction.Session, p actor.UpdateActorParam) (err error) {
 	sqlQuery := `
 	update actors set
 	name = coalesce(:name, name),
 	gender = coalesce(:gender, gender),
 	birth_date = coalesce (:birth_date, birth_date)
-	where id = :id
+	where actor_id = :actor_id
 	`
 	_, err = SqlxTx(ts).NamedExec(sqlQuery, p)
 	return
 }
 
-func (r *actorsRepository) Delete(ts transaction.Session, actorID int) (err error) {
+func (r *actorRepository) Delete(ts transaction.Session, actorID int) (err error) {
 	sqlQuery := `
 	delete from actors
-	where id = $1`
+	where actor_id = $1`
 
 	_, err = SqlxTx(ts).Exec(sqlQuery, actorID)
 	return err
