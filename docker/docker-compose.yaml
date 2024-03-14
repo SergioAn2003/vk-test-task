@@ -45,7 +45,6 @@ services:
       PG_URL: postgresql://test_user:test_password@db:5432/test_db?sslmode=disable
       VERSION: 1.0.0
       CONF_PATH: "config/conf.yaml"
-      PORT: 9000
     volumes:
       - ./volumes/web/log:/app/log
       - ../src/config/conf.yaml:/app/config/conf.yaml
