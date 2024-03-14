@@ -21,7 +21,7 @@ func NewCreateActorParam(actorID int, name, gender string, birthDate time.Time) 
 }
 
 func (c CreateActorParam) IsValidData() bool {
-	return c.Name != "" || (strings.ToLower(c.Gender) == "male" || strings.ToLower(c.Gender) == "female") || !c.BirthDate.Equal(time.Time{})
+	return c.Name != "" && (strings.ToLower(c.Gender) == "male" || strings.ToLower(c.Gender) == "female") && !c.BirthDate.Equal(time.Time{})
 }
 
 type UpdateActorParam struct {

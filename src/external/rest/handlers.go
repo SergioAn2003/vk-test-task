@@ -32,6 +32,7 @@ func (s *Server) CreateActor(w http.ResponseWriter, r *http.Request) {
 
 	actorID, err := s.Usecase.Actors.CreateActor(ts, createActorParam)
 	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 

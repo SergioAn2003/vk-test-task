@@ -1,1 +1,2 @@
 [template] [31mFATA[0m[13.03.2024 17:20:59] не удалось начать прослушивание, ошибка: listen tcp: address 8080: missing port in address  [31mfile[0m=rest/server.go [31mline[0m=29
+[template] [31mERRO[0m[15.03.2024 01:40:01] не удалось добавить актера, ошибка: pq: new row for relation "actors" violates check constraint "actors_gender_check"  [31mbirth_date[0m="2024-03-13 08:00:00 +0300 +0300" [31mfile[0m=usecase/actors.go [31mgender[0m= [31mline[0m=41 [31mname[0m=TestActor
