@@ -8,4 +8,5 @@ import (
 type Actors interface {
 	CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error)
 	Update(ts transaction.Session, p actor.UpdateActorParam) (err error)
+	Delete(ts transaction.Session, actorID int) (err error) 
 }

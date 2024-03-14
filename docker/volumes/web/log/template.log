@@ -47,3 +47,18 @@
 [template] [36mINFO[0m[14.03.2024 14:19:07] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=27
 [template] [36mINFO[0m[14.03.2024 14:21:51] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[14.03.2024 14:21:51] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=28
+[template] [36mINFO[0m[14.03.2024 17:06:56] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 17:06:56] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=28
+[template] [36mINFO[0m[14.03.2024 17:16:36] данные актера успешно обновлены               [36mfile[0m=usecase/actors.go [36mline[0m=51
+[template] [36mINFO[0m[14.03.2024 17:19:21] данные актера успешно обновлены               [36mfile[0m=usecase/actors.go [36mline[0m=51
+[template] [36mINFO[0m[14.03.2024 17:30:11] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 17:30:11] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=28
+[template] [36mINFO[0m[14.03.2024 17:32:34] актер успешно добавлен                        [36mactor_id[0m=6 [36mbirth_date[0m="2024-03-13 08:00:00 +0300 +0300" [36mfile[0m=usecase/actors.go [36mgender[0m=male [36mline[0m=48 [36mname[0m=TestActor
+[template] [36mINFO[0m[14.03.2024 17:42:40] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 17:42:40] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=28
+[template] [36mINFO[0m[14.03.2024 17:43:26] данные актера успешно обновлены               [36mactor_id[0m=1 [36mfile[0m=usecase/actors.go [36mline[0m=66 [36mnew_birth_date[0m="{2024-03-13 08:00:00 +0300 +0300 true}" [36mnew_gender[0m="{male true}" [36mnew_name[0m="{test true}"
+[template] [36mINFO[0m[14.03.2024 20:10:11] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 20:10:11] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=28
+[template] [36mINFO[0m[14.03.2024 20:11:15] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[14.03.2024 20:11:15] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=29
+[template] [36mINFO[0m[14.03.2024 20:11:40] актер успешно удален                          [36mactor_id[0m=1 [36mfile[0m=usecase/actors.go [36mline[0m=84

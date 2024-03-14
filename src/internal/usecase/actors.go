@@ -25,6 +25,12 @@ func NewActors(log *logrus.Logger, ri rimport.RepositoryImports, bi *bimport.Bri
 }
 
 func (u *ActorsUsecase) CreateActor(ts transaction.Session, p actor.CreateActorParam) (actorID int, err error) {
+	lf := logrus.Fields{
+		"name":       p.Name,
+		"gender":     p.Gender,
+		"birth_date": p.BirthDate,
+	}
+
 	if !p.IsValidData() {
 		err = global.ErrParamsIncorect
 		return
@@ -32,22 +38,49 @@ func (u *ActorsUsecase) CreateActor(ts transaction.Session, p actor.CreateActorP
 
 	actorID, err = u.Repository.Actors.CreateActor(ts, p)
 	if err != nil {
-		u.log.Errorln("не удалось добавить актера, ошибка:", err)
+		u.log.WithFields(lf).Errorln("не удалось добавить актера, ошибка:", err)
 		err = global.ErrInternalError
 		return
 	}
 
-	u.log.Infoln("актер успешно добавлен")
+	lf["actor_id"] = actorID
+
+	u.log.WithFields(lf).Infoln("актер успешно добавлен")
 	return
 }
 
 func (u *ActorsUsecase) UpdateActor(ts transaction.Session, p actor.UpdateActorParam) (err error) {
+	lf := logrus.Fields{
+		"actor_id":       p.ID,
+		"new_name":       p.Name,
+		"new_gender":     p.Gender,
+		"new_birth_date": p.BirthDate,
+	}
+
 	if err = u.Repository.Actors.Update(ts, p); err != nil {
-		u.log.Errorln("не удалось обновить данные актера, ошибка:", err)
+		u.log.WithFields(lf).Errorln("не удалось обновить данные актера, ошибка:", err)
 		err = global.ErrInternalError
 		return
 	}
 
-	u.log.Infoln("данные актера успешно обновлены")
+	u.log.WithFields(lf).Infoln("данные актера успешно обновлены")
+	return
+}
+
+func (u *ActorsUsecase) DeleteActor(ts transaction.Session, actorID int) (err error) {
+	lf := logrus.Fields{"actor_id": actorID}
+
+	if actorID <= 0 {
+		err = global.ErrParamsIncorect
+		return
+	}
+
+	if err = u.Repository.Actors.Delete(ts, actorID); err != nil {
+		u.log.WithFields(lf).Errorln("не удалось удалить актера, ошибка:", err)
+		err = global.ErrInternalError
+		return
+	}
+
+	u.log.WithFields(lf).Infoln("актер успешно удален")
 	return
 }

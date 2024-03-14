@@ -34,3 +34,12 @@ func (r *actorsRepository) Update(ts transaction.Session, p actor.UpdateActorPar
 	_, err = SqlxTx(ts).NamedExec(sqlQuery, p)
 	return
 }
+
+func (r *actorsRepository) Delete(ts transaction.Session, actorID int) (err error) {
+	sqlQuery := `
+	delete from actors
+	where id = $1`
+
+	_, err = SqlxTx(ts).Exec(sqlQuery, actorID)
+	return err
+}

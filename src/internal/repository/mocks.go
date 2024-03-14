@@ -55,6 +55,20 @@ func (mr *MockActorsMockRecorder) CreateActor(ts, p any) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateActor", reflect.TypeOf((*MockActors)(nil).CreateActor), ts, p)
 }
 
+// Delete mocks base method.
+func (m *MockActors) Delete(ts transaction.Session, actorID int) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Delete", ts, actorID)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// Delete indicates an expected call of Delete.
+func (mr *MockActorsMockRecorder) Delete(ts, actorID any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockActors)(nil).Delete), ts, actorID)
+}
+
 // Update mocks base method.
 func (m *MockActors) Update(ts transaction.Session, p actor.UpdateActorParam) error {
 	m.ctrl.T.Helper()
