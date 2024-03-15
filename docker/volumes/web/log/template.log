@@ -139,3 +139,37 @@
 [template] [36mINFO[0m[15.03.2024 01:45:49] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[15.03.2024 01:45:49] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=29
 [template] [36mINFO[0m[15.03.2024 01:46:20] актер успешно добавлен                        [36mactor_id[0m=8 [36mbirth_date[0m="2024-03-13 08:00:00 +0300 +0300" [36mfile[0m=usecase/actors.go [36mgender[0m=male [36mline[0m=48 [36mname[0m=test
+[template] [36mINFO[0m[15.03.2024 23:07:24] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:07:24] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=29
+[template] [36mINFO[0m[15.03.2024 23:09:35] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:09:35] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:13:43] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:13:43] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:15:48] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:15:48] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:16:55] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:16:55] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:18:29] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:18:29] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:18:42] фильм успешно добавлен                        [36mfile[0m=usecase/movie.go [36mline[0m=42 [36mtitle[0m=test
+[template] [36mINFO[0m[15.03.2024 23:20:32] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:20:32] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:20:38] фильм test успешно добавлен                   [36mfile[0m=usecase/movie.go [36mline[0m=42 [36mtitle[0m=test
+[template] [36mINFO[0m[15.03.2024 23:24:07] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:24:07] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:26:50] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:26:50] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:28:34] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:28:34] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:29:24] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:29:24] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:29:27] Данные фильма успешно обновлены               [36mfile[0m=usecase/movie.go [36mline[0m=60 [36mmovie_id[0m=0 [36mnew_rating[0m="{0 false}" [36mnew_release_date[0m="{0001-01-01 00:00:00 +0000 UTC false}" [36mnew_title[0m="{test2 true}"
+[template] [36mINFO[0m[15.03.2024 23:32:02] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:32:02] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:32:13] Данные фильма успешно обновлены               [36mfile[0m=usecase/movie.go [36mline[0m=60 [36mmovie_id[0m=7 [36mnew_rating[0m="{0 false}" [36mnew_release_date[0m="{0001-01-01 00:00:00 +0000 UTC false}" [36mnew_title[0m="{test2 true}"
+[template] [36mINFO[0m[15.03.2024 23:33:51] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:33:51] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:34:03] Данные фильма успешно обновлены               [36mfile[0m=usecase/movie.go [36mline[0m=60 [36mmovie_id[0m=5 [36mnew_rating[0m=0 [36mnew_release_date[0m="{0001-01-01 00:00:00 +0000 UTC false}" [36mnew_title[0m="{test2 true}"
+[template] [36mINFO[0m[15.03.2024 23:40:05] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[15.03.2024 23:40:05] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[15.03.2024 23:40:12] фильм успешно удален <nil>                    [36mfile[0m=usecase/movie.go [36mline[0m=79 [36mmovie_id[0m=1

@@ -36,6 +36,7 @@ func NewUsecaseImports(
 
 		Usecase: Usecase{
 			Actor: usecase.NewActors(log, ri, bi),
+			Movie: usecase.NewMovie(log, ri, bi),
 			log:   logger.NewUsecaseLogger(log, "usecase"),
 		},
 		BridgeImports: bi,

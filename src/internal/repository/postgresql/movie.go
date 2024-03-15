@@ -26,9 +26,9 @@ func (r *movieRepository) CreateMovie(ts transaction.Session, p movie.CreateMovi
 func (r *movieRepository) UpdateMovie(ts transaction.Session, movie movie.Movie) (err error) {
 	sqlQuery := `
 	update movies set
-	title = coalesce(:title, title)
-	descripion = coalesce(:descripion, descripion)
-	release_date = coalesce(:release_date, release_date)
+	title = coalesce(:title, title),
+	description = coalesce(:description, description),
+	release_date = coalesce(:release_date, release_date),
 	rating = coalesce(:rating, rating)
 	where movie_id = :movie_id`
 
@@ -44,3 +44,4 @@ func (r *movieRepository) DeleteMovie(ts transaction.Session, movieID int) (err 
 	_, err = SqlxTx(ts).Exec(sqlQuery, movieID)
 	return
 }
+

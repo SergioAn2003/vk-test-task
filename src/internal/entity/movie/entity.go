@@ -6,8 +6,8 @@ import (
 
 type Movie struct {
 	ID          int             `db:"movie_id" json:"movie_id"`
-	Title       sql.NullString  `db:"title"`
-	Description sql.NullString  `db:"description"`
-	ReleaseDate sql.NullTime    `db:"release_date"`
-	Rating      sql.NullFloat64 `db:"rating"`
+	Title       sql.NullString  `db:"title" json:"title"`
+	Description sql.NullString  `db:"description" json:"description"`
+	ReleaseDate sql.NullTime    `db:"release_date" json:"release_date"`
+	Rating      sql.NullFloat64 `db:"rating" json:"rating"`
 }

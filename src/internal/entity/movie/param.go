@@ -19,5 +19,5 @@ func NewCreateMovieParam(title, description string, releaseDate time.Time, ratin
 }
 
 func (c CreateMovieParam) IsValidData() bool {
-	return c.Title != "" && c.Description != "" && !c.ReleaseDate.IsZero() && c.Rating > 0
+	return c.Title != "" || c.Description != "" || !c.ReleaseDate.IsZero() || c.Rating > 0
 }

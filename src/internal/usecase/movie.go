@@ -39,7 +39,7 @@ func (u *MovieUsecase) CreateMovie(ts transaction.Session, p movie.CreateMoviePa
 		return
 	}
 
-	u.log.WithFields(lf).Infoln("фильм успешно добавлен")
+	u.log.WithFields(lf).Infof("фильм %s успешно добавлен", p.Title)
 	return
 }
 
@@ -64,12 +64,18 @@ func (u *MovieUsecase) UpdateMovie(ts transaction.Session, movie movie.Movie) (e
 func (u *MovieUsecase) DeleteMovie(ts transaction.Session, movieID int) (err error) {
 	lf := logrus.Fields{"movie_id": movieID}
 
+	if err = u.Repository.Actor.DeleteActorMovie(ts, movieID); err != nil {
+		u.log.WithFields(lf).Errorln("не удалось удалить фильм актера, ошибка:", err)
+		err = global.ErrInternalError
+		return
+	}
+
 	if err = u.Repository.Movie.DeleteMovie(ts, movieID); err != nil {
 		u.log.WithFields(lf).Errorln("не удалось удалить фильм, ошибка:", err)
 		err = global.ErrInternalError
 		return err
 	}
 
-	u.log.WithFields(lf).Infoln("фильм успешно удален", err)
+	u.log.WithFields(lf).Infoln("фильм успешно удален")
 	return
 }

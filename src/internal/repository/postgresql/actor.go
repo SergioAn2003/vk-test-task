@@ -43,3 +43,12 @@ func (r *actorRepository) Delete(ts transaction.Session, actorID int) (err error
 	_, err = SqlxTx(ts).Exec(sqlQuery, actorID)
 	return err
 }
+
+func (r *actorRepository) DeleteActorMovie(ts transaction.Session, movieID int) (err error) {
+	sqlQuery := `
+	delete from actors_movie
+	where movie_id = $1`
+
+	_, err = SqlxTx(ts).Exec(sqlQuery, movieID)
+	return
+}
