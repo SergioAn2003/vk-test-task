@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"vk-film-library/internal/entity/actor"
+	"vk-film-library/internal/entity/movie"
 
 	"net/http"
 )
@@ -30,7 +31,7 @@ func (s *Server) CreateActor(w http.ResponseWriter, r *http.Request) {
 	}
 	defer ts.Rollback()
 
-	actorID, err := s.Usecase.Actors.CreateActor(ts, createActorParam)
+	actorID, err := s.Usecase.Actor.CreateActor(ts, createActorParam)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -67,7 +68,7 @@ func (s *Server) UpdateActor(w http.ResponseWriter, r *http.Request) {
 	}
 	defer ts.Rollback()
 
-	if err := s.Usecase.Actors.UpdateActor(ts, updateActorParam); err != nil {
+	if err := s.Usecase.Actor.UpdateActor(ts, updateActorParam); err != nil {
 		return
 	}
 
@@ -101,7 +102,7 @@ func (s *Server) DeleteActor(w http.ResponseWriter, r *http.Request) {
 	}
 	defer ts.Rollback()
 
-	if err := s.Usecase.Actors.DeleteActor(ts, actorID); err != nil {
+	if err := s.Usecase.Actor.DeleteActor(ts, actorID); err != nil {
 		return
 	}
 
@@ -113,4 +114,112 @@ func (s *Server) DeleteActor(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintln(w, "актер успешно удален")
+}
+
+func (s *Server) CreateMovie(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var createMovieParam movie.CreateMovieParam
+
+	if err := json.NewDecoder(r.Body).Decode(&createMovieParam); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	movieID, err := s.Usecase.Movie.CreateMovie(ts, createMovieParam)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "фильм успешно добавлен, id фильма = %d", movieID)
+}
+
+func (s *Server) UpdateMovie(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPut {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var movie movie.Movie
+
+	if err := json.NewDecoder(r.Body).Decode(&movie); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	if err := s.Usecase.Movie.UpdateMovie(ts, movie); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintln(w, "данные фильма успешно изменены")
+}
+
+func (s *Server) DeleteMovie(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodDelete {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	movieID, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil {
+		s.log.Errorln("не удалось получить id фильма, ошибка:", err)
+		return
+	}
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	if err := s.Usecase.Movie.DeleteMovie(ts, movieID); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintln(w, "фильм успешно удален")
 }

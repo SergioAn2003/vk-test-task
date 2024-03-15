@@ -35,8 +35,8 @@ func NewUsecaseImports(
 		SessionManager: sessionManager,
 
 		Usecase: Usecase{
-			Actors: usecase.NewActors(log, ri, bi),
-			log:    logger.NewUsecaseLogger(log, "usecase"),
+			Actor: usecase.NewActors(log, ri, bi),
+			log:   logger.NewUsecaseLogger(log, "usecase"),
 		},
 		BridgeImports: bi,
 	}

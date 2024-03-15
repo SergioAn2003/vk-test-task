@@ -7,6 +7,7 @@ import (
 )
 
 type Usecase struct {
-	Actors *usecase.ActorsUsecase
-	log    *logrus.Logger
+	Actor *usecase.ActorsUsecase
+	Movie *usecase.MovieUsecase
+	log   *logrus.Logger
 }

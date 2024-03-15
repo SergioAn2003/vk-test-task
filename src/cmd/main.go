@@ -43,7 +43,7 @@ func main() {
 	ui := uimport.NewUsecaseImports(log, ri, bi, sm)
 
 	bi.InitBridge(
-		ui.Usecase.Actors,
+		ui.Usecase.Actor,
 	)
 
 	server := rest.NewServer(log, ui)
