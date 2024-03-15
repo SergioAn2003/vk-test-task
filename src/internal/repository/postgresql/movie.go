@@ -8,7 +8,7 @@ import (
 
 type movieRepository struct{}
 
-func NewMovie() repository.Movies {
+func NewMovie() repository.Movie {
 	return &movieRepository{}
 }
 

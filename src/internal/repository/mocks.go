@@ -12,6 +12,7 @@ package repository
 import (
 	reflect "reflect"
 	actor "vk-film-library/internal/entity/actor"
+	movie "vk-film-library/internal/entity/movie"
 	transaction "vk-film-library/internal/transaction"
 
 	gomock "go.uber.org/mock/gomock"
@@ -83,25 +84,68 @@ func (mr *MockActorMockRecorder) Update(ts, p any) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockActor)(nil).Update), ts, p)
 }
 
-// MockMovies is a mock of Movies interface.
-type MockMovies struct {
+// MockMovie is a mock of Movie interface.
+type MockMovie struct {
 	ctrl     *gomock.Controller
-	recorder *MockMoviesMockRecorder
+	recorder *MockMovieMockRecorder
 }
 
-// MockMoviesMockRecorder is the mock recorder for MockMovies.
-type MockMoviesMockRecorder struct {
-	mock *MockMovies
+// MockMovieMockRecorder is the mock recorder for MockMovie.
+type MockMovieMockRecorder struct {
+	mock *MockMovie
 }
 
-// NewMockMovies creates a new mock instance.
-func NewMockMovies(ctrl *gomock.Controller) *MockMovies {
-	mock := &MockMovies{ctrl: ctrl}
-	mock.recorder = &MockMoviesMockRecorder{mock}
+// NewMockMovie creates a new mock instance.
+func NewMockMovie(ctrl *gomock.Controller) *MockMovie {
+	mock := &MockMovie{ctrl: ctrl}
+	mock.recorder = &MockMovieMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockMovies) EXPECT() *MockMoviesMockRecorder {
+func (m *MockMovie) EXPECT() *MockMovieMockRecorder {
 	return m.recorder
+}
+
+// CreateMovie mocks base method.
+func (m *MockMovie) CreateMovie(ts transaction.Session, p movie.CreateMovieParam) (int, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "CreateMovie", ts, p)
+	ret0, _ := ret[0].(int)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreateMovie indicates an expected call of CreateMovie.
+func (mr *MockMovieMockRecorder) CreateMovie(ts, p any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateMovie", reflect.TypeOf((*MockMovie)(nil).CreateMovie), ts, p)
+}
+
+// DeleteMovie mocks base method.
+func (m *MockMovie) DeleteMovie(ts transaction.Session, movieID int) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteMovie", ts, movieID)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// DeleteMovie indicates an expected call of DeleteMovie.
+func (mr *MockMovieMockRecorder) DeleteMovie(ts, movieID any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteMovie", reflect.TypeOf((*MockMovie)(nil).DeleteMovie), ts, movieID)
+}
+
+// UpdateMovie mocks base method.
+func (m *MockMovie) UpdateMovie(ts transaction.Session, movie movie.Movie) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateMovie", ts, movie)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdateMovie indicates an expected call of UpdateMovie.
+func (mr *MockMovieMockRecorder) UpdateMovie(ts, movie any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateMovie", reflect.TypeOf((*MockMovie)(nil).UpdateMovie), ts, movie)
 }
