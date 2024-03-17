@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"fmt"
 	"vk-film-library/bimport"
 	"vk-film-library/internal/entity/actor"
 	"vk-film-library/internal/entity/global"
@@ -83,4 +84,34 @@ func (u *ActorsUsecase) DeleteActor(ts transaction.Session, actorID int) (err er
 
 	u.log.WithFields(lf).Infoln("актер успешно удален")
 	return
+}
+
+func (u *ActorsUsecase) LoadActorList(ts transaction.Session) ([]actor.Actor, error) {
+	actorList, err := u.Repository.Actor.LoadActorList(ts)
+	switch err {
+	case nil:
+	case global.ErrNoData:
+		u.log.Debugln("нет актеров")
+		return nil, err
+	default:
+		u.log.Errorln("не удалось получить актеров, ошибка:", err)
+		return nil, global.ErrInternalError
+	}
+
+	for i := range actorList {
+		fmt.Println(actorList[i].ID)
+		movieList, err := u.Repository.Actor.FindActorFilmList(ts, actorList[i].ID)
+		switch err {
+		case nil:
+		case global.ErrNoData:
+			continue
+		default:
+			u.log.Errorln("не удалось получить фильмы актера, ошибка:", err)
+			return nil, global.ErrInternalError
+		}
+
+		actorList[i].MovieList = movieList
+	}
+
+	return actorList, nil
 }

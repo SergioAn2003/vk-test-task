@@ -25,6 +25,7 @@ func (s *Server) Run() {
 	s.mux.HandleFunc("/actor/create", s.CreateActor)
 	s.mux.HandleFunc("/actor/update", s.UpdateActor)
 	s.mux.HandleFunc("/actor/delete", s.DeleteActor)
+	s.mux.HandleFunc("/actor/load", s.LoadActorList)
 
 	s.mux.HandleFunc("/movie/create", s.CreateMovie)
 	s.mux.HandleFunc("/movie/update", s.UpdateMovie)

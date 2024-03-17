@@ -84,6 +84,36 @@ func (mr *MockActorMockRecorder) DeleteActorMovie(ts, movieID any) *gomock.Call 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteActorMovie", reflect.TypeOf((*MockActor)(nil).DeleteActorMovie), ts, movieID)
 }
 
+// FindActorFilmList mocks base method.
+func (m *MockActor) FindActorFilmList(ts transaction.Session, actorID int) ([]movie.Movie, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FindActorFilmList", ts, actorID)
+	ret0, _ := ret[0].([]movie.Movie)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindActorFilmList indicates an expected call of FindActorFilmList.
+func (mr *MockActorMockRecorder) FindActorFilmList(ts, actorID any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindActorFilmList", reflect.TypeOf((*MockActor)(nil).FindActorFilmList), ts, actorID)
+}
+
+// LoadActorList mocks base method.
+func (m *MockActor) LoadActorList(ts transaction.Session) ([]actor.Actor, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "LoadActorList", ts)
+	ret0, _ := ret[0].([]actor.Actor)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// LoadActorList indicates an expected call of LoadActorList.
+func (mr *MockActorMockRecorder) LoadActorList(ts any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LoadActorList", reflect.TypeOf((*MockActor)(nil).LoadActorList), ts)
+}
+
 // Update mocks base method.
 func (m *MockActor) Update(ts transaction.Session, p actor.UpdateActorParam) error {
 	m.ctrl.T.Helper()

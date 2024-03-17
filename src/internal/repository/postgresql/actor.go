@@ -64,3 +64,11 @@ func (r *actorRepository) FindActorFilmList(ts transaction.Session, actorID int)
 
 	return gensql.Select[movie.Movie](SqlxTx(ts), sqlQuery, actorID)
 }
+
+func (r *actorRepository) LoadActorList(ts transaction.Session) ([]actor.Actor, error) {
+	sqlQuery := `
+	select actor_id, name, gender, birth_date
+	from actors;`
+
+	return gensql.Select[actor.Actor](SqlxTx(ts), sqlQuery)
+}

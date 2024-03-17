@@ -209,3 +209,15 @@
 [template] [36mINFO[0m[18.03.2024 00:47:05] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=35
 [template] [36mINFO[0m[18.03.2024 00:49:10] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[18.03.2024 00:49:10] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=35
+[template] [36mINFO[0m[18.03.2024 01:11:57] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 01:11:58] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
+[template] [36mINFO[0m[18.03.2024 01:12:48] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 01:12:48] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
+[template] [36mINFO[0m[18.03.2024 01:13:28] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 01:13:28] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
+[template] [36mINFO[0m[18.03.2024 01:16:41] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 01:16:41] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
+[template] [36mINFO[0m[18.03.2024 01:18:08] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 01:18:08] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
+[template] [36mINFO[0m[18.03.2024 01:19:27] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 01:19:27] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36

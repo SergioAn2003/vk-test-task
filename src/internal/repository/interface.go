@@ -11,6 +11,8 @@ type Actor interface {
 	Update(ts transaction.Session, p actor.UpdateActorParam) (err error)
 	Delete(ts transaction.Session, actorID int) (err error)
 	DeleteActorMovie(ts transaction.Session, movieID int) (err error)
+	LoadActorList(ts transaction.Session) ([]actor.Actor, error)
+	FindActorFilmList(ts transaction.Session, actorID int) ([]movie.Movie, error)
 }
 
 type Movie interface {
