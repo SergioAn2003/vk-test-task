@@ -2,7 +2,6 @@ package gensql
 
 import (
 	"database/sql"
-	"fmt"
 	"vk-film-library/internal/entity/global"
 
 	"github.com/jmoiron/sqlx"
@@ -16,8 +15,6 @@ func Select[T any](tx *sqlx.Tx, sqlQuery string, params ...interface{}) ([]T, er
 	if err == nil && len(data) == 0 {
 		err = sql.ErrNoRows
 	}
-
-	fmt.Println(data)
 
 	switch err {
 	case nil:

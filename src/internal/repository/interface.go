@@ -18,4 +18,6 @@ type Movie interface {
 	UpdateMovie(ts transaction.Session, p movie.UpdateMovieParam) (err error)
 	DeleteMovie(ts transaction.Session, movieID int) (err error)
 	GetMovieList(ts transaction.Session) ([]movie.Movie, error)
+	FindMovieListByTitle(ts transaction.Session, title string) ([]movie.Movie, error)
+	FindMovieListByActorName(ts transaction.Session, actorName string) ([]movie.Movie, error)
 }

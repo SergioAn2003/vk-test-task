@@ -53,3 +53,23 @@ func (r *movieRepository) GetMovieList(ts transaction.Session) ([]movie.Movie, e
 
 	return gensql.Select[movie.Movie](SqlxTx(ts), sqlQuery)
 }
+
+func (r *movieRepository) FindMovieListByTitle(ts transaction.Session, title string) ([]movie.Movie, error) {
+	sqlQuery := `
+	select movie_id, title, description, release_date
+	from movies
+	where lower(title) like '%' || lower($1) || '%'`
+
+	return gensql.Select[movie.Movie](SqlxTx(ts), sqlQuery, title)
+}
+
+func (r *movieRepository) FindMovieListByActorName(ts transaction.Session, actorName string) ([]movie.Movie, error) {
+	sqlQuery := `
+	select m.movie_id, m.title, m.description, m.release_date
+	from movies m
+	join actors_movie am on (am.movie_id = m.movie_id)
+	join actors a on (am.actor_id = a.actor_id)
+	where lower(a.name) like '%' || lower($1) || '%'`
+
+	return gensql.Select[movie.Movie](SqlxTx(ts), sqlQuery, actorName)
+}

@@ -257,3 +257,38 @@ func (s *Server) GetMovieList(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+func (s *Server) FindMovieListByTitleAndActorName(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	title := r.URL.Query().Get("title")
+	actorName := r.URL.Query().Get("actor_name")
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	movieList, err := s.Usecase.Movie.FindMovieListByTitleAndActorName(ts, title, actorName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	if err := json.NewEncoder(w).Encode(movieList); err != nil {
+		http.Error(w, "не удалось отправить данные с сервера", http.StatusInternalServerError)
+		return
+	}
+}

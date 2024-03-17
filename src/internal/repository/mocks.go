@@ -150,6 +150,36 @@ func (mr *MockMovieMockRecorder) DeleteMovie(ts, movieID any) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteMovie", reflect.TypeOf((*MockMovie)(nil).DeleteMovie), ts, movieID)
 }
 
+// FindMovieListByActorName mocks base method.
+func (m *MockMovie) FindMovieListByActorName(ts transaction.Session, actorName string) ([]movie.Movie, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FindMovieListByActorName", ts, actorName)
+	ret0, _ := ret[0].([]movie.Movie)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindMovieListByActorName indicates an expected call of FindMovieListByActorName.
+func (mr *MockMovieMockRecorder) FindMovieListByActorName(ts, actorName any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindMovieListByActorName", reflect.TypeOf((*MockMovie)(nil).FindMovieListByActorName), ts, actorName)
+}
+
+// FindMovieListByTitle mocks base method.
+func (m *MockMovie) FindMovieListByTitle(ts transaction.Session, title string) ([]movie.Movie, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FindMovieListByTitle", ts, title)
+	ret0, _ := ret[0].([]movie.Movie)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindMovieListByTitle indicates an expected call of FindMovieListByTitle.
+func (mr *MockMovieMockRecorder) FindMovieListByTitle(ts, title any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindMovieListByTitle", reflect.TypeOf((*MockMovie)(nil).FindMovieListByTitle), ts, title)
+}
+
 // GetMovieList mocks base method.
 func (m *MockMovie) GetMovieList(ts transaction.Session) ([]movie.Movie, error) {
 	m.ctrl.T.Helper()

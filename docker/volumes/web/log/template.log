@@ -205,3 +205,7 @@
 [template] [36mINFO[0m[17.03.2024 23:24:41] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
 [template] [36mINFO[0m[17.03.2024 23:35:47] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[17.03.2024 23:35:47] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[18.03.2024 00:47:05] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 00:47:05] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=35
+[template] [36mINFO[0m[18.03.2024 00:49:10] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 00:49:10] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=35

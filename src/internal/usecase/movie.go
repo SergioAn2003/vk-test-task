@@ -105,6 +105,44 @@ func (u *MovieUsecase) GetMovieList(ts transaction.Session, sortBy string) ([]mo
 	return movieList, nil
 }
 
+func (u *MovieUsecase) FindMovieListByTitleAndActorName(ts transaction.Session, title, actorName string) (movieList []movie.Movie, err error) {
+	lf := logrus.Fields{
+		"movie_titile_fragment": title,
+		"actor_name_fragment":   actorName,
+	}
+
+	if title != "" && actorName == "" {
+		movieList, err = u.Repository.Movie.FindMovieListByTitle(ts, title)
+		switch err {
+		case nil:
+		case global.ErrNoData:
+			u.log.WithFields(lf).Debugln("нет фильмов с таким названием")
+			return
+		default:
+			u.log.WithFields(lf).Errorln("не удалось найти фильмы, ошибка:", err)
+			err = global.ErrInternalError
+			return
+		}
+	} else if title == "" && actorName != "" {
+		movieList, err = u.Repository.Movie.FindMovieListByActorName(ts, actorName)
+		switch err {
+		case nil:
+		case global.ErrNoData:
+			u.log.WithFields(lf).Debugln("нет фильмов по этому имени актера")
+			return
+		default:
+			u.log.WithFields(lf).Errorln("не удалось найти фильмы, ошибка:", err)
+			err = global.ErrInternalError
+			return
+		}
+	} else {
+		err = global.ErrParamsIncorect
+		return
+	}
+
+	return
+}
+
 func (u *MovieUsecase) SortMovieListByRating(movieList []movie.Movie) {
 	sort.Slice(movieList, func(i, j int) bool {
 		return movieList[i].Rating > movieList[j].Rating
