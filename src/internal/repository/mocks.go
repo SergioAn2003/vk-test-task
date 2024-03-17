@@ -150,16 +150,31 @@ func (mr *MockMovieMockRecorder) DeleteMovie(ts, movieID any) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteMovie", reflect.TypeOf((*MockMovie)(nil).DeleteMovie), ts, movieID)
 }
 
-// UpdateMovie mocks base method.
-func (m *MockMovie) UpdateMovie(ts transaction.Session, movie movie.Movie) error {
+// GetMovieList mocks base method.
+func (m *MockMovie) GetMovieList(ts transaction.Session) ([]movie.Movie, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdateMovie", ts, movie)
+	ret := m.ctrl.Call(m, "GetMovieList", ts)
+	ret0, _ := ret[0].([]movie.Movie)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetMovieList indicates an expected call of GetMovieList.
+func (mr *MockMovieMockRecorder) GetMovieList(ts any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMovieList", reflect.TypeOf((*MockMovie)(nil).GetMovieList), ts)
+}
+
+// UpdateMovie mocks base method.
+func (m *MockMovie) UpdateMovie(ts transaction.Session, p movie.UpdateMovieParam) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateMovie", ts, p)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // UpdateMovie indicates an expected call of UpdateMovie.
-func (mr *MockMovieMockRecorder) UpdateMovie(ts, movie any) *gomock.Call {
+func (mr *MockMovieMockRecorder) UpdateMovie(ts, p any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateMovie", reflect.TypeOf((*MockMovie)(nil).UpdateMovie), ts, movie)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateMovie", reflect.TypeOf((*MockMovie)(nil).UpdateMovie), ts, p)
 }

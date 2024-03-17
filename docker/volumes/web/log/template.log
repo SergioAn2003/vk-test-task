@@ -173,3 +173,35 @@
 [template] [36mINFO[0m[15.03.2024 23:40:05] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[15.03.2024 23:40:05] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
 [template] [36mINFO[0m[15.03.2024 23:40:12] фильм успешно удален <nil>                    [36mfile[0m=usecase/movie.go [36mline[0m=79 [36mmovie_id[0m=1
+[template] [36mINFO[0m[17.03.2024 20:18:25] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 20:18:25] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=33
+[template] [36mINFO[0m[17.03.2024 21:29:22] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 21:29:22] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 21:32:13] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 21:32:13] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 21:34:31] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 21:34:31] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 21:56:17] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 21:56:17] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 21:57:39] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 21:57:39] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 22:01:08] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 22:01:08] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 22:07:56] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 22:07:56] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 22:08:14] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 22:08:14] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 22:13:08] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 22:13:08] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 22:17:23] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 22:17:23] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 22:37:43] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 22:37:43] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 23:17:24] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 23:17:24] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 23:22:50] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 23:22:50] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 23:24:41] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 23:24:41] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34
+[template] [36mINFO[0m[17.03.2024 23:35:47] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[17.03.2024 23:35:47] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=34

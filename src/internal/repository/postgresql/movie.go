@@ -4,6 +4,7 @@ import (
 	"vk-film-library/internal/entity/movie"
 	"vk-film-library/internal/repository"
 	"vk-film-library/internal/transaction"
+	"vk-film-library/tools/gensql"
 )
 
 type movieRepository struct{}
@@ -23,7 +24,7 @@ func (r *movieRepository) CreateMovie(ts transaction.Session, p movie.CreateMovi
 	return
 }
 
-func (r *movieRepository) UpdateMovie(ts transaction.Session, movie movie.Movie) (err error) {
+func (r *movieRepository) UpdateMovie(ts transaction.Session, p movie.UpdateMovieParam) (err error) {
 	sqlQuery := `
 	update movies set
 	title = coalesce(:title, title),
@@ -32,7 +33,7 @@ func (r *movieRepository) UpdateMovie(ts transaction.Session, movie movie.Movie)
 	rating = coalesce(:rating, rating)
 	where movie_id = :movie_id`
 
-	_, err = SqlxTx(ts).NamedExec(sqlQuery, movie)
+	_, err = SqlxTx(ts).NamedExec(sqlQuery, p)
 	return
 }
 
@@ -45,3 +46,10 @@ func (r *movieRepository) DeleteMovie(ts transaction.Session, movieID int) (err 
 	return
 }
 
+func (r *movieRepository) GetMovieList(ts transaction.Session) ([]movie.Movie, error) {
+	sqlQuery := `
+	select movie_id, title, description, release_date, rating
+	from movies`
+
+	return gensql.Select[movie.Movie](SqlxTx(ts), sqlQuery)
+}

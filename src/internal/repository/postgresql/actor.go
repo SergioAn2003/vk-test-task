@@ -2,8 +2,10 @@ package postgresql
 
 import (
 	"vk-film-library/internal/entity/actor"
+	"vk-film-library/internal/entity/movie"
 	"vk-film-library/internal/repository"
 	"vk-film-library/internal/transaction"
+	"vk-film-library/tools/gensql"
 )
 
 type actorRepository struct{}
@@ -51,4 +53,14 @@ func (r *actorRepository) DeleteActorMovie(ts transaction.Session, movieID int) 
 
 	_, err = SqlxTx(ts).Exec(sqlQuery, movieID)
 	return
+}
+
+func (r *actorRepository) FindActorFilmList(ts transaction.Session, actorID int) ([]movie.Movie, error) {
+	sqlQuery := `
+	select m.title, m.description, m.release_date, m.rating
+	from movies m
+	join actors_movie am on (am.movie_id = m.movie_id)
+	where am.actor_id = $1`
+
+	return gensql.Select[movie.Movie](SqlxTx(ts), sqlQuery, actorID)
 }

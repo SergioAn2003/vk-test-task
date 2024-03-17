@@ -15,6 +15,7 @@ type Actor interface {
 
 type Movie interface {
 	CreateMovie(ts transaction.Session, p movie.CreateMovieParam) (movieID int, err error)
-	UpdateMovie(ts transaction.Session, movie movie.Movie) (err error)
+	UpdateMovie(ts transaction.Session, p movie.UpdateMovieParam) (err error)
 	DeleteMovie(ts transaction.Session, movieID int) (err error)
+	GetMovieList(ts transaction.Session) ([]movie.Movie, error)
 }

@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"sort"
 	"vk-film-library/bimport"
 	"vk-film-library/internal/entity/global"
 	"vk-film-library/internal/entity/movie"
@@ -43,15 +44,15 @@ func (u *MovieUsecase) CreateMovie(ts transaction.Session, p movie.CreateMoviePa
 	return
 }
 
-func (u *MovieUsecase) UpdateMovie(ts transaction.Session, movie movie.Movie) (err error) {
+func (u *MovieUsecase) UpdateMovie(ts transaction.Session, p movie.UpdateMovieParam) (err error) {
 	lf := logrus.Fields{
-		"movie_id":         movie.ID,
-		"new_title":        movie.Title,
-		"new_release_date": movie.ReleaseDate,
-		"new_rating":       movie.Rating,
+		"movie_id":         p.ID,
+		"new_title":        p.Title,
+		"new_release_date": p.ReleaseDate,
+		"new_rating":       p.Rating,
 	}
 
-	if err = u.Repository.Movie.UpdateMovie(ts, movie); err != nil {
+	if err = u.Repository.Movie.UpdateMovie(ts, p); err != nil {
 		u.log.WithFields(lf).Errorln("не удалось обновить данные фильма, ошибка:", err)
 		err = global.ErrInternalError
 		return
@@ -78,4 +79,46 @@ func (u *MovieUsecase) DeleteMovie(ts transaction.Session, movieID int) (err err
 
 	u.log.WithFields(lf).Infoln("фильм успешно удален")
 	return
+}
+
+func (u *MovieUsecase) GetMovieList(ts transaction.Session, sortBy string) ([]movie.Movie, error) {
+	movieList, err := u.Repository.Movie.GetMovieList(ts)
+	switch err {
+	case nil:
+	case global.ErrNoData:
+		u.log.Debugln("нет фильмов в базе")
+		return nil, err
+	default:
+		u.log.Errorln("не удалось получить фильмы, ошибка:", err)
+		return nil, global.ErrInternalError
+	}
+
+	switch sortBy {
+	case "title":
+		u.SortMovieListByTitle(movieList)
+	case "release_date":
+		u.SortMovieListByReleaseDate(movieList)
+	default:
+		u.SortMovieListByRating(movieList)
+	}
+
+	return movieList, nil
+}
+
+func (u *MovieUsecase) SortMovieListByRating(movieList []movie.Movie) {
+	sort.Slice(movieList, func(i, j int) bool {
+		return movieList[i].Rating > movieList[j].Rating
+	})
+}
+
+func (u *MovieUsecase) SortMovieListByTitle(movieList []movie.Movie) {
+	sort.Slice(movieList, func(i, j int) bool {
+		return movieList[i].Title < movieList[j].Title
+	})
+}
+
+func (u *MovieUsecase) SortMovieListByReleaseDate(movieList []movie.Movie) {
+	sort.Slice(movieList, func(i, j int) bool {
+		return movieList[i].ReleaseDate.Before(movieList[j].ReleaseDate)
+	})
 }

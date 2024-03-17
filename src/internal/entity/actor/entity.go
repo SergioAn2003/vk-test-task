@@ -12,3 +12,4 @@ type Actor struct {
 	BirthDate time.Time `db:"birth_date" json:"birth_date"`
 	MovieList []movie.Movie
 }
+
