@@ -13,6 +13,7 @@ import (
 	reflect "reflect"
 	actor "vk-film-library/internal/entity/actor"
 	movie "vk-film-library/internal/entity/movie"
+	user "vk-film-library/internal/entity/user"
 	transaction "vk-film-library/internal/transaction"
 
 	gomock "go.uber.org/mock/gomock"
@@ -82,6 +83,20 @@ func (m *MockActor) DeleteActorMovie(ts transaction.Session, movieID int) error 
 func (mr *MockActorMockRecorder) DeleteActorMovie(ts, movieID any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteActorMovie", reflect.TypeOf((*MockActor)(nil).DeleteActorMovie), ts, movieID)
+}
+
+// DeleteActorMovies mocks base method.
+func (m *MockActor) DeleteActorMovies(ts transaction.Session, actorID int) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteActorMovies", ts, actorID)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// DeleteActorMovies indicates an expected call of DeleteActorMovies.
+func (mr *MockActorMockRecorder) DeleteActorMovies(ts, actorID any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteActorMovies", reflect.TypeOf((*MockActor)(nil).DeleteActorMovies), ts, actorID)
 }
 
 // FindActorFilmList mocks base method.
@@ -237,4 +252,56 @@ func (m *MockMovie) UpdateMovie(ts transaction.Session, p movie.UpdateMovieParam
 func (mr *MockMovieMockRecorder) UpdateMovie(ts, p any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateMovie", reflect.TypeOf((*MockMovie)(nil).UpdateMovie), ts, p)
+}
+
+// MockAuth is a mock of Auth interface.
+type MockAuth struct {
+	ctrl     *gomock.Controller
+	recorder *MockAuthMockRecorder
+}
+
+// MockAuthMockRecorder is the mock recorder for MockAuth.
+type MockAuthMockRecorder struct {
+	mock *MockAuth
+}
+
+// NewMockAuth creates a new mock instance.
+func NewMockAuth(ctrl *gomock.Controller) *MockAuth {
+	mock := &MockAuth{ctrl: ctrl}
+	mock.recorder = &MockAuthMockRecorder{mock}
+	return mock
+}
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockAuth) EXPECT() *MockAuthMockRecorder {
+	return m.recorder
+}
+
+// GetUseInfo mocks base method.
+func (m *MockAuth) GetUseInfo(ts transaction.Session, login string) (user.RegisteredUser, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetUseInfo", ts, login)
+	ret0, _ := ret[0].(user.RegisteredUser)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetUseInfo indicates an expected call of GetUseInfo.
+func (mr *MockAuthMockRecorder) GetUseInfo(ts, login any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUseInfo", reflect.TypeOf((*MockAuth)(nil).GetUseInfo), ts, login)
+}
+
+// RegisterUser mocks base method.
+func (m *MockAuth) RegisterUser(ts transaction.Session, user user.RegisteredUser) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "RegisterUser", ts, user)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// RegisterUser indicates an expected call of RegisterUser.
+func (mr *MockAuthMockRecorder) RegisterUser(ts, user any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RegisterUser", reflect.TypeOf((*MockAuth)(nil).RegisterUser), ts, user)
 }

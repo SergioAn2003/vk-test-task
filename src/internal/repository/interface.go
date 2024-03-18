@@ -3,6 +3,7 @@ package repository
 import (
 	"vk-film-library/internal/entity/actor"
 	"vk-film-library/internal/entity/movie"
+	"vk-film-library/internal/entity/user"
 	"vk-film-library/internal/transaction"
 )
 
@@ -13,6 +14,7 @@ type Actor interface {
 	DeleteActorMovie(ts transaction.Session, movieID int) (err error)
 	LoadActorList(ts transaction.Session) ([]actor.Actor, error)
 	FindActorFilmList(ts transaction.Session, actorID int) ([]movie.Movie, error)
+	DeleteActorMovies(ts transaction.Session, actorID int) (err error)
 }
 
 type Movie interface {
@@ -22,4 +24,9 @@ type Movie interface {
 	GetMovieList(ts transaction.Session) ([]movie.Movie, error)
 	FindMovieListByTitle(ts transaction.Session, title string) ([]movie.Movie, error)
 	FindMovieListByActorName(ts transaction.Session, actorName string) ([]movie.Movie, error)
+}
+
+type Auth interface {
+	RegisterUser(ts transaction.Session, user user.RegisteredUser) (err error)
+	GetUseInfo(ts transaction.Session, login string) (user.RegisteredUser, error)
 }

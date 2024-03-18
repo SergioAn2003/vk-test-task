@@ -221,3 +221,59 @@
 [template] [36mINFO[0m[18.03.2024 01:18:08] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
 [template] [36mINFO[0m[18.03.2024 01:19:27] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
 [template] [36mINFO[0m[18.03.2024 01:19:27] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=36
+[template] [36mINFO[0m[18.03.2024 23:54:22] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 23:54:22] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[18.03.2024 23:56:35] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 23:56:35] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[18.03.2024 23:58:01] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 23:58:01] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[18.03.2024 23:58:11] пользователь успешно зарегистрирован          [36mfile[0m=usecase/auth.go [36mline[0m=50
+[template] [36mINFO[0m[18.03.2024 23:59:17] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[18.03.2024 23:59:17] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:03:02] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:03:02] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:04:03] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:04:03] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:04:21] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 00:05:52] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:05:52] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:07:09] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:07:09] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:07:57] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:07:57] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:09:08] пользователь успешно зарегистрирован          [36mfile[0m=usecase/auth.go [36mline[0m=50
+[template] [36mINFO[0m[19.03.2024 00:09:24] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 00:15:46] пользователь успешно зарегистрирован          [36mfile[0m=usecase/auth.go [36mline[0m=50
+[template] [36mINFO[0m[19.03.2024 00:15:59] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 00:31:09] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:31:09] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:37:56] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 00:39:52] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:39:52] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:40:16] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 00:46:27] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:46:27] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:47:02] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 00:48:02] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:48:02] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 00:50:33] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 00:50:33] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 01:04:37] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 01:04:37] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 01:04:49] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 01:05:02] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 01:08:14] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 01:08:14] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 01:08:51] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 01:19:12] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 01:19:12] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 01:19:23] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=90
+[template] [36mINFO[0m[19.03.2024 01:32:01] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 01:32:01] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 01:32:54] пользователь успешно зарегистрирован          [36mfile[0m=usecase/auth.go [36mline[0m=55
+[template] [36mINFO[0m[19.03.2024 01:33:03] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=95
+[template] [36mINFO[0m[19.03.2024 01:34:53] пользователь успешно зарегистрирован          [36mfile[0m=usecase/auth.go [36mline[0m=55
+[template] [36mINFO[0m[19.03.2024 01:35:13] пользователь  успешно авторизован             [36mfile[0m=usecase/auth.go [36mline[0m=95
+[template] [36mINFO[0m[19.03.2024 01:40:18] version 1.0.0                                 [36mfile[0m=cmd/main.go [36mline[0m=25
+[template] [36mINFO[0m[19.03.2024 01:40:18] сервер успешно запущен на порту :9000         [36mfile[0m=rest/server.go [36mline[0m=39
+[template] [36mINFO[0m[19.03.2024 01:40:24] актер успешно удален                          [36mactor_id[0m=1 [36mfile[0m=usecase/actors.go [36mline[0m=91

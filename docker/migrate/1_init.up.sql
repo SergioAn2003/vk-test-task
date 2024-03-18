@@ -19,6 +19,18 @@ create table actors_movie(
     constraint unique_actor_movie unique (actor_id, movie_id)
 );
 
+create table user_roles(
+    role_id serial primary key,
+    role_title varchar(20) not null unique
+);
+
+create table users(
+    user_id serial primary key,
+    login varchar(150) not null,
+    password varchar(255) not null,
+    role varchar(20) not null references user_roles(role_title)
+);
+
 INSERT INTO
     actors (name, gender, birth_date)
 VALUES

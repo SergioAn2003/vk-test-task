@@ -72,3 +72,12 @@ func (r *actorRepository) LoadActorList(ts transaction.Session) ([]actor.Actor, 
 
 	return gensql.Select[actor.Actor](SqlxTx(ts), sqlQuery)
 }
+
+func (r *actorRepository) DeleteActorMovies(ts transaction.Session, actorID int) (err error) {
+	sqlQuery := `
+	delete from actors_movie
+	where actor_id = $1`
+
+	_, err = SqlxTx(ts).Exec(sqlQuery, actorID)
+	return
+}

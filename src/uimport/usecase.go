@@ -9,5 +9,6 @@ import (
 type Usecase struct {
 	Actor *usecase.ActorsUsecase
 	Movie *usecase.MovieUsecase
+	Auth *usecase.AuthUsecase
 	log   *logrus.Logger
 }

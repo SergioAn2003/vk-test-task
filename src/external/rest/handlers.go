@@ -6,9 +6,92 @@ import (
 	"strconv"
 	"vk-film-library/internal/entity/actor"
 	"vk-film-library/internal/entity/movie"
+	"vk-film-library/internal/entity/user"
 
 	"net/http"
 )
+
+func (s *Server) SignUp(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var u user.User
+
+	if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	if err := s.Usecase.Auth.RegisterUser(ts, u); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Printf("пользователь %s успешно зарегистрирован", u.Login)
+}
+
+func (s *Server) Login(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "incorect method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var u user.User
+
+	if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	ts := s.SessionManager.CreateSession()
+	if err := ts.Start(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось открыть транзакцию, ошибка:", err)
+		return
+	}
+	defer ts.Rollback()
+
+	jwtToken, err := s.Usecase.Auth.Login(ts, u)
+	switch err {
+	case nil:
+	case user.ErrUnAuthorized:
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	default:
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := ts.Commit(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		s.log.Errorln("не удалось закрыть транзакцию, ошибка:", err)
+		return
+	}
+
+	http.SetCookie(w, &http.Cookie{
+		Name:     "SESSTOKEN",
+		Value:    jwtToken,
+	})
+
+	fmt.Fprintf(w, "пользователь %s успешно авторизован", u.Login)
+}
 
 func (s *Server) CreateActor(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {

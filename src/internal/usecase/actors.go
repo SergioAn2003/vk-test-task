@@ -76,6 +76,12 @@ func (u *ActorsUsecase) DeleteActor(ts transaction.Session, actorID int) (err er
 		return
 	}
 
+	if err = u.Repository.Actor.DeleteActorMovies(ts, actorID); err != nil {
+		u.log.WithFields(lf).Errorln("не удалось удалить фильмы актера, ошибка:", err)
+		err = global.ErrInternalError
+		return
+	}
+
 	if err = u.Repository.Actor.Delete(ts, actorID); err != nil {
 		u.log.WithFields(lf).Errorln("не удалось удалить актера, ошибка:", err)
 		err = global.ErrInternalError

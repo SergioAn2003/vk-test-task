@@ -26,6 +26,7 @@ func NewRepositoryImports(sessionManager transaction.SessionManager) RepositoryI
 		Repository: Repository{
 			Actor: postgresql.NewActor(),
 			Movie: postgresql.NewMovie(),
+			Auth:  postgresql.NewAuth(),
 		},
 	}
 }
