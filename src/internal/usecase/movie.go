@@ -82,14 +82,16 @@ func (u *MovieUsecase) DeleteMovie(ts transaction.Session, movieID int) (err err
 }
 
 func (u *MovieUsecase) GetMovieList(ts transaction.Session, sortBy string) ([]movie.Movie, error) {
+	lf:=logrus.Fields{"sort_by":sortBy}
+
 	movieList, err := u.Repository.Movie.GetMovieList(ts)
 	switch err {
 	case nil:
 	case global.ErrNoData:
-		u.log.Debugln("нет фильмов в базе")
+		u.log.WithFields(lf).Debugln("нет фильмов в базе")
 		return nil, err
 	default:
-		u.log.Errorln("не удалось получить фильмы, ошибка:", err)
+		u.log.WithFields(lf).Errorln("не удалось получить фильмы, ошибка:", err)
 		return nil, global.ErrInternalError
 	}
 

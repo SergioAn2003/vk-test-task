@@ -119,5 +119,6 @@ func (u *ActorsUsecase) LoadActorList(ts transaction.Session) ([]actor.Actor, er
 		actorList[i].MovieList = movieList
 	}
 
+	u.log.Infoln("список актеров и их фильмов успешно получен")
 	return actorList, nil
 }
